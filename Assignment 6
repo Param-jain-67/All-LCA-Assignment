@@ -1,0 +1,40 @@
+import pandas as pd
+
+data = {
+    'Name': ['Amit', 'Rahul', 'Priya', 'Amit'],
+    'Marks': [85, 90, None, 85],
+    'City': ['Pune', 'Mumbai', 'Delhi', 'Pune']
+}
+
+df = pd.DataFrame(data)
+
+print("Original Dataset:")
+print(df)
+
+print("\nFirst Five Rows:")
+print(df.head())
+
+print("\nDataset Information:")
+df.info()
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Fill missing marks with the mean
+df['Marks'] = df['Marks'].fillna(df['Marks'].mean())
+
+print("\nAfter Handling Missing Values:")
+print(df)
+
+# Remove duplicate records
+df = df.drop_duplicates()
+
+print("\nAfter Removing Duplicates:")
+print(df)
+
+# Select rows where marks are greater than 80
+print("\nStudents Scoring Above 80:")
+print(df.loc[df['Marks'] > 80])
+
+print("\nStatistical Description:")
+print(df.describe())
